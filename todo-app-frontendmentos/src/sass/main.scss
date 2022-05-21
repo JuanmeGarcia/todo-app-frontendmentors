@@ -1,0 +1,21 @@
+@import './header';
+@import './body';
+@import './variables';
+@import './todo';
+@import './icon';
+@import './todoContainer';
+@import './config';
+
+body{
+    color: $clr-dark-blue;
+    font-family: $font-family;
+    min-height: 100vh;
+    width: 100%;
+}
+
+#root{
+    min-height: 100vh;
+    width: 100%;
+    display: grid;
+    grid-template-rows: 30% auto
+}
