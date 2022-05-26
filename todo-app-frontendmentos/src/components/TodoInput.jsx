@@ -21,7 +21,7 @@ function TodoInput({value, handleChange, isCompleted, toggleIsCompleted, createN
 				placeholder="Add todo"
 				value={value}
 				onChange={handleChange}
-				onKeyPress={(e) => createNewTodo(e, value)}
+				onKeyPress={(e) => createNewTodo(e, value, isCompleted)}
 			/>
 		</div>
 	)

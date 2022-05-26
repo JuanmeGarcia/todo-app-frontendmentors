@@ -44,12 +44,6 @@ function App() {
 		setValue(value)
 	}
 
-	/* 	React.useEffect(() => {
-		console.log(`nashe`)
-		localStorage.setItem('todos', JSON.stringify(todos))
-	}, [todos])
-
- */
 	const setIsCheckedTodo = id => {
 		setTodos(prevIsChecked => {
 			return prevIsChecked.map(todo =>
@@ -63,13 +57,13 @@ function App() {
 		})
 	}
 
-	const createNewTodo = (event, todo) => {
+	const createNewTodo = (event, todo, isCompleted) => {
 		if(!todo) return
 		if (event.key === 'Enter') {
 			const newTodo = {
 				id: todos.length + 1,
 				body: todo,
-				state: false,
+				state: isCompleted,
 			}
 			setTodos(prevTodos => [...prevTodos, newTodo])
 			setValue('')
