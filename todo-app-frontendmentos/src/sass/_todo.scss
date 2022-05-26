@@ -1,0 +1,22 @@
+.todo{
+    display: flex;
+    justify-content: space-between;
+    padding-inline: 1.5rem;
+    padding-block: 1.2rem;
+    background-color: $clr-darkD-blue;
+    color: $clr-grayish-blue;
+    width: 100%;
+
+    .todo__info{
+        display: flex;
+        gap: 10px;
+        align-items: center;
+        font-size: 14px;
+        .todo_paragraph{
+            margin-top: 4px;
+        }
+        .crossed{
+            text-decoration: line-through;
+        }
+    }
+}

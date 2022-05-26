@@ -1,6 +1,8 @@
 .body{
     width: 100%;
-    display: grid;
+    display: flex;
     background-color: $clr-dark-blue;
     position: relative;
+    padding-inline: 20px;
+    justify-content: center;
 }

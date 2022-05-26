@@ -1,13 +1,7 @@
 import React from 'react'
-import { useToggler } from '../hooks/useToggler'
 
-function TodoInput() {
-	const [value, setValue] = React.useState('')
-    const [isCompleted, toggleIsCompleted] = useToggler()
-    const handleChange = (e) => {
-        const {value} = e.target
-        setValue(value)
-    }
+function TodoInput({value, handleChange, isCompleted, toggleIsCompleted, createNewTodo}) {
+
 
     React.useEffect(()=>{
         console.log(isCompleted)
@@ -27,6 +21,7 @@ function TodoInput() {
 				placeholder="Add todo"
 				value={value}
 				onChange={handleChange}
+				onKeyPress={(e) => createNewTodo(e, value)}
 			/>
 		</div>
 	)

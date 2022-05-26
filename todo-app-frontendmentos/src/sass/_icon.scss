@@ -1,0 +1,23 @@
+.todo-check{
+    position: relative;
+    border: 2px solid $clr-dark-grayish-blue;
+    border-radius: 100%;
+    padding: 10px;
+    cursor: pointer;
+    &--completed{
+        background-image: url(../assets/images/icon-check.svg), $clr-bg-gradient;
+        display: inline-block;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+}
+
+.todo-cross{
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-image: url(../assets/images/icon-cross.svg);
+}
