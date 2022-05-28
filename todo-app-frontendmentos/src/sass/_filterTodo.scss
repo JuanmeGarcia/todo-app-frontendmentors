@@ -1,0 +1,22 @@
+.filter{
+    display: flex;
+    width: 100%;
+    max-width: 500px;
+    background-color: $clr-darkD-blue;
+    border-radius: 10px;
+
+    &__list{
+        display: flex;
+        width: 100%;
+        justify-content: center;
+        gap: 30px;
+        padding-block: 1.2rem;
+        &-item{
+            color: $clr-vDark-grayish-blue;
+            cursor: pointer;
+            &--active{
+                color: $clr-grayish-blue;
+            }
+        }
+    }
+}

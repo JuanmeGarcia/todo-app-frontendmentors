@@ -1,0 +1,31 @@
+.todo-counter{
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    padding-inline: 1.5rem;
+    background-color: $clr-darkD-blue;
+    color: $clr-grayish-blue;
+    padding-block: 1.2rem;
+    border-radius: 0 0 10px 10px;
+    width: 100%;
+    max-width: 500px;
+    border-top: 1px solid $clr-dark-grayish-blue;
+    margin-top: -40px;
+
+
+    .todo-counter__text--remove{
+        cursor: pointer;
+        @include transition-ease;
+        &:hover{
+            color: $clr-vDark-grayish-blue;
+        }
+    }
+    
+    &--empty{
+        border-radius: 10px;
+        border: none;
+        justify-content: center;
+        font-size: 0.8rem;
+    }
+}
+

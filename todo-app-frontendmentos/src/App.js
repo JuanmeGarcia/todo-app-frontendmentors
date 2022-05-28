@@ -5,8 +5,10 @@ import Body from './components/Body'
 import TodoContainer from './components/TodoContainer'
 import Todo from './components/Todo'
 import { useToggler } from './hooks/useToggler'
+import TodosCounter from './components/TodosCounter'
+import FilterTodo from './components/FilterTodo'
 
-const todosExamples = [
+/* const todosExamples = [
 	{
 		id: 1,
 		body: 'Привет',
@@ -23,21 +25,31 @@ const todosExamples = [
 		state: false,
 	},
 ]
-
+ */
 function App() {
 	const [todos, setTodos] = React.useState(
 		() => JSON.parse(localStorage.getItem('todos')) || []
 	)
+	const [value, setValue] = React.useState('')
+	const [isCompleted, toggleIsCompleted] = useToggler()
+	const [filter, setFilter] = React.useState('all')
 
+	let filteredTodos = []
+
+	if(filter === 'all'){
+		filteredTodos = [...todos]
+	}
+	if(filter === 'active'){
+		filteredTodos = todos.filter(todo => !todo.state)
+	}
+	if(filter === 'completed'){
+		filteredTodos = todos.filter(todo => todo.state)
+	}
 
 	React.useEffect(() => {
 		console.log(`nashe`)
 		localStorage.setItem('todos', JSON.stringify(todos))
 	}, [todos])
-
-
-	const [value, setValue] = React.useState('')
-	const [isCompleted, toggleIsCompleted] = useToggler()
 
 	const handleChange = e => {
 		const { value } = e.target
@@ -57,7 +69,7 @@ function App() {
 		})
 	}
 
-	const createNewTodo = (event, todo, isCompleted) => {
+	const createNewTodo = (event, todo, isCompleted = false) => {
 		if(!todo) return
 		if (event.key === 'Enter') {
 			const newTodo = {
@@ -77,7 +89,7 @@ function App() {
 		})
 	}
 
-	const iterateTodos = todos.map(todo => (
+	const iterateTodos = filteredTodos.map(todo => (
 		<Todo
 			key={todo.id}
 			todo={todo}
@@ -96,7 +108,15 @@ function App() {
 				createNewTodo={createNewTodo}
 			/>
 			<Body>
-				<TodoContainer>{iterateTodos}</TodoContainer>
+				{todos.length > 0 && <TodoContainer>{iterateTodos}</TodoContainer>}
+				<TodosCounter
+					todos={todos}
+					setTodos={setTodos}
+				/>
+				<FilterTodo 
+					filter={filter}
+					setFilter={setFilter}
+				/>
 			</Body>
 		</>
 	)
